@@ -9,7 +9,7 @@
   - momentum update with the query encoder
 - methods
   - moco trains a visual representation encoder by matching an encoded query q to a dictionary of encoded keys using a contrastive loss
-  - larger dictionary size than batch size
+  - larger dictionary size than batch size test !
 <img width="300" alt="img1" src="https://user-images.githubusercontent.com/87194339/212867164-3f9f95e8-af8f-488d-bb3b-a301eb7a8095.png"> 
 
 - constrastive loss function (InfoNCE)
