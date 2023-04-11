@@ -45,7 +45,7 @@
 * End-to-end needs to increase the batch size to secure the number of negative samples, but due to memory limitations, it is not easy to grow above 1024
 * MoCo method shows better accuracy than end-to-end or memory bank
 * MoCo method can improve performance by increasing memory bank size
-* <img width="600" alt="img1" src="./img/comparison_of_contrastive_loss.png"> 
+<img width="600" alt="img1" src="./img/comparison_of_contrastive_loss.png"> 
 
 ## Reference
 ```tex
