@@ -10,6 +10,14 @@
 - contrastive cross entropy loss
 - larger batch sizes and longer training
 
+## Contrastive Learning Framework
+![Framework](https://user-images.githubusercontent.com/90434136/231513564-fd0985c7-1933-4125-9bf5-08d95a1b780f.png)
+- maximize agreement between differently augmented views of the same data
+1. Data augmentation : cropping, color distortions, Gaussian blur...
+2. Neural network base encoder f(·) : extract representation vectors -> adopt ResNet
+3. Small neural network projection head g(·) : use MLP with 1 hidden layer
+4. Contrastive Loss function : Maximize agreement
+
 
 
 ## Reference
