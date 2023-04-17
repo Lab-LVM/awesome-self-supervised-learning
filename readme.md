@@ -7,7 +7,7 @@ This repository contains the Self-Supervised learning paper lists
 
 - [introduction](#introduction)
 - [Contrastive Learning](#Contrastive-Learning)
-
+- [Clustering](#Clustering)
 
 ## Introduction
 
