@@ -3,9 +3,9 @@
 - Publication: ECCV, 2018
 - Link: [[paper](https://arxiv.org/pdf/1807.05520.pdf)] [[code](https://github.com/facebookresearch/deepcluster)]
 
+## Introduce 
 <img width="600" alt="model" src="./img/deepcluster.png">
 
-## Introduce 
 - When θ is sampled from a Gaussian distribution, without any learning, fθ does not produce good features.
 - However the performance of such random features on standard transfer tasks, is far above the chance level. 
 - The last convolutional layer of a random AlexNet achieves 12% in accuracy on ImageNet while the chance is at 0.1%
