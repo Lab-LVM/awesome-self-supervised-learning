@@ -5,18 +5,10 @@
 
 ## Abstract
 - keywords
-  - negative samples are encoded in queue (dynamic dictionary)
-  - momentum is updated with the query encoder
-- methods
-  - MoCo trains a visual representation encoder by matching an encoded query q to a dictionary of encoded keys using a contrastive loss
-  - The size of the dictionary is more important than the batch size.
-<img width="300" alt="img1" src="https://user-images.githubusercontent.com/87194339/212867164-3f9f95e8-af8f-488d-bb3b-a301eb7a8095.png"> 
+  - No More Using ResNet: Using Vision Transformers (ViT) for self-supervised learning
+  - Freeze the patch projection to improve stability.
 
-- constrastive loss function (InfoNCE)
-<img width="200" alt="img2" src="https://user-images.githubusercontent.com/87194339/212869520-a47e9c42-742c-4765-b1f2-da4db0c2350e.png">
-- To achieve lower loss, the value of positive sample should be smaller. (It means numerator should be smaller)
-
-## MoCo vs SimCLR
+## MoCo v3
 - MoCo is an asymmetric structure, and uses the values stored in the dynamic dictionary as negative samples
 - SimCLR, on the other hand, has a symmetrical structure, and uses all images except itself in the batch as negative samples.
 - So MoCo doesn't affected by batch size, but SimCLR doesn't.
