@@ -8,10 +8,12 @@
   - No More Using ResNet: Using Vision Transformers (ViT) for self-supervised learning
   - Freeze the patch projection to improve stability.
 
-## MoCo v3
-- MoCo is an asymmetric structure, and uses the values stored in the dynamic dictionary as negative samples
-- SimCLR, on the other hand, has a symmetrical structure, and uses all images except itself in the batch as negative samples.
-- So MoCo doesn't affected by batch size, but SimCLR doesn't.
+## Features of MoCo v3
+- Using a transformer-based ViT model
+- Deleting a dynamic dictionary of a queue structure which is a key keyword in MoCo v1
+  - Comparing to negative sample inside the batch using a huge batch size like SimCLR
+- Configure query encoder by adding prediction head over MLP head
+- The projection head is 3-layer MLP, and 2-layer MLP is applied as a prediction head (including BN)
 <img width="600" alt="img1" src="./img/moco_vs_simclr.png"> 
 
 ## Conceptual comparison of three contrastive loss mechanisms
