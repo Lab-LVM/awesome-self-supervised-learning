@@ -14,32 +14,45 @@
   - Comparing to negative sample inside the batch using a huge batch size like SimCLR
 - Configure query encoder by adding prediction head over MLP head
 - The projection head is 3-layer MLP, and 2-layer MLP is applied as a prediction head (including BN)
-<img width="600" alt="img1" src="./img/moco_vs_simclr.png"> 
+<img width="600" alt="img1" src="./img/mocov3_architecture.png">
+- The continuous loss function uses the existing one.
 
-## Conceptual comparison of three contrastive loss mechanisms
-- end-to-end method calculates the gradient by back-propagation in both directions, and its performance is determined by the batch size.
-- memory bank method uses 'memory bank' to store and compare old data using fixed-sized memory.
-- MoCo uses momentum to create a dynamic queue and use it to learn the model.
-<img width="600" alt="img1" src="./img/contrastive_loss_mechanisms.png"> 
+## Brief introduction to vit
+1. Split image into fixed patches.
+2. The divided patch is combined with the class token to perform patch embedding, and position embedding is added to maintain location information.
+3. Transfer the above embedding result to the encoder
+- Input patch size: 16×16 or 14×14, so if you spread it out, the length is 196 and 256.
+  - After that, each position embedding is performed, using 2D to representation spatial information better.
+<img width="600" alt="img1" src="./img/mocov3_vit.png"> 
 
-## Pseudocode of MoCo in a PyTorch-like style
-1. Initialize parameters from momentum encoder to parameters from encoder
-2. Augmentation and delivery of images to be placed on both sides
-* &ensp;augmentation: resize&crop, color jittering(lightness, saturation), horizontal flip, grayscale conversion
-3. Pass the previously augmented data through the encoder and the moment encoder, respectively
-* &ensp;The Momentus Encoder does not calculate gradient
-4. Calculate logit for positive pair and negative pair (normalization), InfoNCE loss calculation
-5. Update the encoder by backpropagating, and update the moment encoder by multiplying the weight by the existing moment parameter m.
-6. Add the key of this mini batch in the queue, and if the dictionary size is overflowing, pop the oldest key to update the memory bank
-<img width="600" alt="img1" src="./img/pseudocode_of_moco.png"> 
+## Empirical Observations on Basic Factors
+1. Batch size: a batch of 1k and 2k produces reasonably smooth curves, 4k and 6k have worse failure patterns
+- It hypothesized that the training is partially restarted and jumps out of the current local optimum, then seeks a new trajectory.
+- As a consequence, the training does not diverge, but the accuracy depends on how good the local restart is
+<img width="600" alt="img1" src="./img/mocov3_batch.png">
 
+2. Learning rate: when lr is smaller, the training is more stable, but it is prone to under-fitting.
+- Conversely, if the learning rate is large, it is less stable and accuracy is reduced.
+<img width="600" alt="img1" src="./img/mocov3_lr.png"> 
 
-## Comparison of three contrastive loss mechanisms
-* The k on the x-axis represents the number of negative samples
-* End-to-end needs to increase the batch size to secure the number of negative samples, but due to memory limitations, it is not easy to grow above 1024
-* MoCo method shows better accuracy than end-to-end or memory bank
-* MoCo method can improve performance by increasing memory bank size
-<img width="600" alt="img1" src="./img/comparison_of_contrastive_loss.png"> 
+## A Trick for Improving Stability
+- Freeze the first layer: Do not learn the layer that converts patch to embedded
+  - Use a fixed random patch projection layer to embed the patches, which is not learned.
+  - The instability of the first layer seems to be spreading backward, so I decided to freeze the patch projection layer.
+<img width="600" alt="img1" src="./img/mocov3_trick.png"> 
+
+- Compare Random patch projection vs Learned patch projections: Random patch projection's performance is better.
+  - It is thought that overfitting would have been prevented because it is randomly selected without relying on the location of a particular pattern or object.
+  - Same with SimCLR, BYOL, Random patch projection has higher performance
+<img width="600" alt="img1" src="./img/mocov3_random.png">
+
+## Performance Comparison of MoCo v3
+- When comparing MoCo series, the MoCo v3 has the highest performance.
+  - The reason is that MoCo v3 has the bigger batch size and added extra prediction head
+<img width="600" alt="img1" src="./img/mocov3_moco_series.png"> 
+
+- It also shows excellent performance compared to the ResNet-based model.
+<img width="600" alt="img1" src="./img/mocov3_resnet.png"> 
 
 ## Reference
 ```tex
