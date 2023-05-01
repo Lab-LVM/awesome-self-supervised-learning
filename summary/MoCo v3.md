@@ -33,7 +33,7 @@
 
 2. Learning rate: when lr is smaller, the training is more stable, but it is prone to under-fitting.
 - Conversely, if the learning rate is large, it is less stable and accuracy is reduced.
-<img width="600" alt="img1" src="./img/mocov3_lr.png"> 
+<img width="600" alt="img1" src="./img/mocov3_lr.PNG"> 
 
 ## A Trick for Improving Stability
 - Freeze the first layer: Do not learn the layer that converts patch to embedded
