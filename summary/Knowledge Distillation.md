@@ -20,7 +20,7 @@
 - Making small models perform well using the results of cumbesome
 - T=1 is normal softmax, but introduces a new parameter called 'Temperature'
   - High T is used for transferring knowledge in cumbesome, and T=1 is used for small models (the bigger the T, the softer it becomes)
-<img width="600" alt="img1" src="./img/distillation_temperature.png">
+<img width="300" alt="img1" src="./img/distillation_temperature.png">
 
 ### hard label
 - Cross entropy for correct label in small model (generally used in practice)
