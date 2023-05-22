@@ -1,7 +1,7 @@
-# MoCo v3
-- Title: An Empirical Study of Training Self-Supervised Vision Transformers
-- Publication: ICCV, 2021
-- Link: [[paper](https://arxiv.org/abs/2104.02057.pdf)] [[code](https://github.com/facebookresearch/moco-v3)]
+# Knowledge Distillation
+- Title: Distilling the Knowledge in a Neural Network
+- Publication: NIPS, 2014
+- Link: [[paper](https://arxiv.org/pdf/1503.02531.pdf)] [[code](https://github.com/SforAiDl/KD_Lib)]
 
 ## Abstract
 - keywords
@@ -56,19 +56,19 @@
 
 ## Reference
 ```tex
-@article{DBLP:journals/corr/abs-2104-02057,
-  author       = {Xinlei Chen and
-                  Saining Xie and
-                  Kaiming He},
-  title        = {An Empirical Study of Training Self-Supervised Vision Transformers},
+@article{DBLP:journals/corr/HintonVD15,
+  author       = {Geoffrey E. Hinton and
+                  Oriol Vinyals and
+                  Jeffrey Dean},
+  title        = {Distilling the Knowledge in a Neural Network},
   journal      = {CoRR},
-  volume       = {abs/2104.02057},
-  year         = {2021},
-  url          = {https://arxiv.org/abs/2104.02057},
+  volume       = {abs/1503.02531},
+  year         = {2015},
+  url          = {http://arxiv.org/abs/1503.02531},
   eprinttype    = {arXiv},
-  eprint       = {2104.02057},
-  timestamp    = {Mon, 12 Apr 2021 16:14:56 +0200},
-  biburl       = {https://dblp.org/rec/journals/corr/abs-2104-02057.bib},
+  eprint       = {1503.02531},
+  timestamp    = {Mon, 13 Aug 2018 16:48:36 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/HintonVD15.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```
