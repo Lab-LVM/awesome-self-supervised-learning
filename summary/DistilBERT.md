@@ -1,35 +1,17 @@
-# Knowledge Distillation
-- Title: Distilling the Knowledge in a Neural Network
-- Publication: NIPS, 2014
-- Link: [[paper](https://arxiv.org/pdf/1503.02531.pdf)] [[code](https://github.com/SforAiDl/KD_Lib)]
+# DistilBERT
+- Title: DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter
+- Publication: NIPS, 2019
+- Link: [[paper](https://arxiv.org/pdf/1910.01108.pdf)] [[code](https://github.com/huggingface/transformers/blob/main/src/transformers/models/distilbert/modeling_distilbert.py)]
 
 ## Abstract
-- One simple way to improve the performance of machine learning: Ensemble, but it has the disadvantage of high time latency and computational cost.
+- Pre-train a smaller general purpose language representation model, called DistilBERT
 - It propose a way to distill knowledge from once-trained large-scale machine learning (or models) to a small model
 
-## Distillation
+## Problems with Existing Models
+- The computational cost is too high.
+- Increasing computational cost and memory requirements will be difficult to use unless resources are available.
 
-### Mechanism of Knowledge distillation
-- Not only focus on the highest value, but also pay attention to other values
-  - In the category of BMW, truck, carrot, if the actual label is BMW
-  - It's less likely to be classified as a truck, but it's probably higher than a carrot!
-- Use class probability as a soft target for small models to learn, which is the result of the Cumbersome model
-- Since it is a high entropy, there is more information than hard targets used for general learning.
-- Since the variation of gradients between training gradients is small, learning is possible efficiently even with data with little small model.
-### soft label
-- Making small models perform well using the results of cumbesome
-- T=1 is normal softmax, but introduces a new parameter called 'Temperature'
-  - High T is used for transferring knowledge in cumbesome, and T=1 is used for small models (the bigger the T, the softer it becomes)
-<img width="300" alt="img1" src="./img/distillation_temperature.png">
-
-### hard label
-- Cross entropy for correct label in small model (generally used in practice)
-
-### distillation loss
-- The above two losses are used as loss functions. Generally, the front is given large and the back is given small.
-- This is because the robustness of the model can be improved by giving less weight to the Hard label.
-  - Less sensitive to false labels and more responsive to noise.
-<img width="600" alt="img1" src="./img/distillation_loss.png">
+## Knowledge distillation used in DistilBERT
 
 ## Matching logits is a special case of distillation
   - v: combersome, p: soft target
@@ -56,19 +38,21 @@
 
 ## Reference
 ```tex
-@article{DBLP:journals/corr/HintonVD15,
-  author       = {Geoffrey E. Hinton and
-                  Oriol Vinyals and
-                  Jeffrey Dean},
-  title        = {Distilling the Knowledge in a Neural Network},
+@article{DBLP:journals/corr/abs-1910-01108,
+  author       = {Victor Sanh and
+                  Lysandre Debut and
+                  Julien Chaumond and
+                  Thomas Wolf},
+  title        = {DistilBERT, a distilled version of {BERT:} smaller, faster, cheaper
+                  and lighter},
   journal      = {CoRR},
-  volume       = {abs/1503.02531},
-  year         = {2015},
-  url          = {http://arxiv.org/abs/1503.02531},
+  volume       = {abs/1910.01108},
+  year         = {2019},
+  url          = {http://arxiv.org/abs/1910.01108},
   eprinttype    = {arXiv},
-  eprint       = {1503.02531},
-  timestamp    = {Mon, 13 Aug 2018 16:48:36 +0200},
-  biburl       = {https://dblp.org/rec/journals/corr/HintonVD15.bib},
+  eprint       = {1910.01108},
+  timestamp    = {Tue, 02 Jun 2020 12:48:59 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1910-01108.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```
