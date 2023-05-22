@@ -41,7 +41,7 @@
 
 - If distillation is done well, it can be assumed that logit has zero-mean.
 - So the sigma can be ignored.
-<img width="600" alt="img1" src="./img/distillation_diff3.png">
+<img width="300" alt="img1" src="./img/distillation_diff3.png">
 
 - If the temperature is small, the distribution function of the soft target decreases to a degree that is close to one-hot encoding.
   - Decrease the difference between negative logs
