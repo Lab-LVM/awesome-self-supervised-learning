@@ -38,9 +38,9 @@
 - DistilBERT retains 97% of BERT performance
 <img width="600" alt="img1" src="./img/distilbert_perf.png">
 - DistilBERT is significantly smaller while being constantly faster.
-<img width="600" alt="img1" src="./img/distilbert_fast.png">
+<img width="300" alt="img1" src="./img/distilbert_fast.png">
 - Ablation study: hard target loss(Lmin) has the least impact, score drops significantly when resetting to random weight
-<img width="600" alt="img1" src="./img/distilbert_ablation.png">
+<img width="500" alt="img1" src="./img/distilbert_ablation.png">
 
 ## Reference
 ```tex
