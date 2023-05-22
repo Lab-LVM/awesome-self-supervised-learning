@@ -9,6 +9,13 @@
 
 ## Distillation
 
+### Mechanism of Knowledge distillation
+- Not only focus on the highest value, but also pay attention to other values
+  - In the category of BMW, truck, carrot, if the actual label is BMW
+  - It's less likely to be classified as a truck, but it's probably higher than a carrot!
+- Use class probability as a soft target for small models to learn, which is the result of the Cumbersome model
+- Since it is a high entropy, there is more information than hard targets used for general learning.
+- Since the variation of gradients between training gradients is small, learning is possible efficiently even with data with little small model.
 ### soft label
 - Making small models perform well using the results of cumbesome
 - T=1 is normal softmax, but introduces a new parameter called 'Temperature'
