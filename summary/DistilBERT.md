@@ -10,31 +10,37 @@
 ## Problems with Existing Models
 - The computational cost is too high.
 - Increasing computational cost and memory requirements will be difficult to use unless resources are available.
+<img width="600" alt="img1" src="./img/distilbert_cost.png">
 
-## Knowledge distillation used in DistilBERT
+## DistilBERT: a distilled version of BERT
 
-## Matching logits is a special case of distillation
-  - v: combersome, p: soft target
-- When the Cross entropy is differentiated by logit(z), it is as follows.
-<img width="600" alt="img1" src="./img/distillation_diff1.png">
+### Mechanism of DistilBERT
+- Student BERT model completely removes NSP from BERT.
+- Therefore, the token type embedding (segment embedding) is removed, and the last pooler is also removed.
+  - Pooler: Compressing token representations into one fixed vector through an additional layer
+  - Due to the absence of a pooler, distilBERT cannot directly obtain sentence-level expressions
+- Learning with a very large batch size (4K data per batch)
+- NSP is not used, and dynamic masking is used which is RoBERTa's trick. Create a different mask for each input
+- Halve the number of layers.
+  -  Reducing dimensions doesn't have a significant impact on speed improvement.
+  -  Reducing the number of layers can directly reduce the amount of computation.
+- As a result, it has a 40% smaller size and speeds up to 60% faster
+<img width="600" alt="img1" src="./img/distilbert_structure.png">
 
-- At this time, if T is greater than logit, it is possible to approximate exp = 1 + ε.
-<img width="600" alt="img1" src="./img/distillation_diff2.png">
+### Loss functions
+- soft target loss(Lce): calculate between soft target and soft prediction
+- hard target loss(Lmin): calcualate between hard target and hard prediction
+  - MLM(Masked Language Model) loss used in BERT
+- cosine embedding loss(Lcos): embed directions of hidden vectos between teacher model and student model
+  - Adjust both vectors to face the same direction
 
-- If distillation is done well, it can be assumed that logit has zero-mean.
-- So the sigma can be ignored.
-<img width="300" alt="img1" src="./img/distillation_diff3.png">
-
-- If the temperature is small, the distribution function of the soft target decreases to a degree that is close to one-hot encoding.
-  - Decrease the difference between negative logs
-- If the temperature is large, it becomes soft and the value for the negative logit of the soft target is larger
-  - So the difference from the negative logit of the distributed model is larger.
-
-## Experiment
-- If there are more than 300 units per layer, all similar results in t ≥ 8 in MNIST.
-  - If the number of units is drastically reduced to about 30 per layer, it shows optimal performance at 2.5 ≤ t ≤ 4.
-- The accuracy of the model using distill is observed, and the word error is also low. in speech recognition.
-<img width="600" alt="img1" src="./img/distillation_acc.png">
+## Performance of DistilBERT
+- DistilBERT retains 97% of BERT performance
+<img width="600" alt="img1" src="./img/distilbert_perf.png">
+- DistilBERT is significantly smaller while being constantly faster.
+<img width="600" alt="img1" src="./img/distilbert_fast.png">
+- Ablation study: hard target loss(Lmin) has the least impact, score drops significantly when resetting to random weight
+<img width="600" alt="img1" src="./img/distilbert_ablation.png">
 
 ## Reference
 ```tex
