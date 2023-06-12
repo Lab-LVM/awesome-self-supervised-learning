@@ -51,7 +51,7 @@
     * But it performs better at mean average precision than pre-trained Scratch-R-CNN.
 - Yahoo/Flickr 100-million Dataset: To compare effect of variable dataset biases together
 - Performance is slightly lower than color dropping, but there is still rrom for boosting because it is a scratch model.
-<img width="600" alt="img1" src="./img/context_prediction_result.png">
+<img width="1200" alt="img1" src="./img/context_prediction_result.png">
 
 ## Reference
 ```tex
