@@ -12,36 +12,46 @@
 - In training, the algorithm must guess the positon of one patch relative to the other.
 
 ## Tasks: sampling random pairs of patches
+1. Sample random pairs of patches in one of eight spatial configurations
+    * Present each pair to a machine learner, providing no information about the patches’ original position within the image.
+<img width="600" alt="img1" src="./img/context_prediction_eight_patches.png">
+2. Context prediction
+    * Embedding where images that are semantically similar are close, while semantically different ones are far apart.
+- Visual presentation showed good performance in object detection and improved performance over learning in scratch (initial state)
+- This means that whether the patch is assigned to the correct number (instance-level supervision) can improve the performance of the category-level task.
 
-# continue from here!
+## Architecture for pair classification
+- How can the architecture predict relative offsets betweent two patches?
+    * Goal: to learn feature embedding for individual patches so that similar image patches are located close.
+    * The network receives two patches and is designed to return probabilities to each of the eight choices.
+- Implement late-fusion architecture with two AlexNet pairs
+    * In AlexNet-style model, first to fc6 layer is a separate process.
+    * Calculate the embedding function using the same weight.
+    * Only two layers use two patches of data, the network must proceed with most semantic reasoning separately for each patch.
+<img width="600" alt="img1" src="./img/context_prediction_model.png">
 
-### Mechanism of DistilBERT
-- Student BERT model completely removes NSP from BERT.
-- Therefore, the token type embedding (segment embedding) is removed, and the last pooler is also removed.
-  - Pooler: Compressing token representations into one fixed vector through an additional layer
-  - Due to the absence of a pooler, distilBERT cannot directly obtain sentence-level expressions
-- Learning with a very large batch size (4K data per batch)
-- NSP is not used, and dynamic masking is used which is RoBERTa's trick. Create a different mask for each input
-- Halve the number of layers.
-  -  Reducing dimensions doesn't have a significant impact on speed improvement.
-  -  Reducing the number of layers can directly reduce the amount of computation.
-- As a result, it has a 40% smaller size and speeds up to 60% faster
-<img width="600" alt="img1" src="./img/distilbert_structure.png">
+## Avoiding "trivial" solutions
+- It is important to extract features without trivial shortcuts.
+- To avoid trivial solutions, two methods are used.
+    1. Put the gaps between patches. (about half the size of the patch)
+    2. Randomly move patches up to 7 pixels to prevent something like a running line between patches.
+<img width="600" alt="img1" src="./img/context_prediction_shorcut.png">
 
-### Loss functions
-- soft target loss(Lce): calculate between soft target and soft prediction
-- hard target loss(Lmin): calcualate between hard target and hard prediction
-  - MLM(Masked Language Model) loss used in BERT
-- cosine embedding loss(Lcos): embed directions of hidden vectos between teacher model and student model
-  - Adjust both vectors to face the same direction
+## Implement details
+1. Resize the image by maintaining the ratio of the number of pixels between 150K and 450K
+2. Sample the 96*96 size patch from the image. (For the efficiency of the calculation, it is only sampled in grid form.)
+3. Mean subtraction - dropping color - Randomly downsampling less than 100 patches for some patches
+4. Upsampling for robustness
+    *  The activation of fc6, fc7 dropped to zero, worsening the output vector to have an even value in all eight categories.
+    *  Using batch normalization to keep network activities changing
 
-## Performance of DistilBERT
-- DistilBERT retains 97% of BERT performance
-<img width="600" alt="img1" src="./img/distilbert_perf.png">
-- DistilBERT is significantly smaller while being constantly faster.
-<img width="300" alt="img1" src="./img/distilbert_fast.png">
-- Ablation study: hard target loss(Lmin) has the least impact, score drops significantly when resetting to random weight
-<img width="500" alt="img1" src="./img/distilbert_ablation.png">
+## Results in object detection
+- Results of fine-tuning CNNs learned by Context Prediction to R-CNN in object detection
+    * Performance is lower than fine-tuned with Image-Net.
+    * But it performs better at mean average precision than pre-trained Scratch-R-CNN.
+- Yahoo/Flickr 100-million Dataset: To compare effect of variable dataset biases together
+- Performance is slightly lower than color dropping, but there is still rrom for boosting because it is a scratch model.
+<img width="600" alt="img1" src="./img/context_prediction_result.png">
 
 ## Reference
 ```tex
