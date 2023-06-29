@@ -1,6 +1,6 @@
 # Self-training with Noisy Student
 - Title: Self-training with Noisy Student improves ImageNet classification
-- Publication: CoRR, 2019
+- Publication: CVPR, 2020
 - Link: [[paper](https://arxiv.org/pdf/1911.04252.pdf)] [[code](https://github.com/google-research/noisystudent)]
 
 ## Abstract
