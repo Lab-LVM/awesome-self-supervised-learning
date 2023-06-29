@@ -1,6 +1,6 @@
 # Predicting Image Rotations
 - Title: Self-training with Noisy Student improves ImageNet classification
-- Publication: CoRR, 2018
+- Publication: CVPR, 2020
 - Link: [[paper](https://arxiv.org/pdf/1803.07728.pdf)] [[code](https://github.com/gidariss/FeatureLearningRotNet)]
 
 ## Introduction
