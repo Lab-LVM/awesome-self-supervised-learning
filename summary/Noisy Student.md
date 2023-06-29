@@ -25,11 +25,11 @@
 2. Teacher model creates pseudo label for unlabeled image.
 3. Learn the student model using images 1 and 2.
 4. Reuse the student model as the teacher model, return to number 2 and repeat.
-<img width="300" alt="img1" src="./img/noisy student_algo.png">
+<img width="500" alt="img1" src="./img/noisy student_algo.png">
 
 - The entire algorithm is expressed as a symbol as follows.
 - This algorithm is an enhanced version of self-training and is one of the methods of self-supervised learning and distillation.
-<img width="300" alt="img1" src="./img/noisy student_symbol.png">
+<img width="500" alt="img1" src="./img/noisy student_symbol.png">
 
 ## Key points in this mechanism
 1. Add noise to the student model.
@@ -59,7 +59,7 @@
 - The best performance was repeated three times
   - "Repeat" means that making a teacher model by reusing student model.
 
-<img width="300" alt="img1" src="./img/noisy student_repeat.png">
+<img width="500" alt="img1" src="./img/noisy student_repeat.png">
 
 1. Initial teacher model: Learning by EfficientNet-B7
 2. student model learned by EfficientNet-L2 (teacher: EfficientNet-B7)
@@ -67,7 +67,7 @@
 4. student model learned by EfficientNet-L2 (teacher: EfficientNet-B7)
 
 - EfficientNet-L2 with Noisy Student Training performs well!
-<img width="300" alt="img1" src="./img/noisy student_perf.png">
+<img width="800" alt="img1" src="./img/noisy student_perf.png">
 
 ## Reference
 ```tex
