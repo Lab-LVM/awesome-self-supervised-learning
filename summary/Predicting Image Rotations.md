@@ -18,10 +18,10 @@
 ## Methodolgy
 - F: ConvNet model, G: k distinct geometric variations (not random because they are discrete)
 - g: Create converted image X (transformation applied)
-<img width="800" alt="img1" src="./img/rotation_for1">
+<img width="800" alt="img1" src="./img/rotation_for1.png">
 
 - X | (theta): Transformation by changing the angle by theta for input X.
-<img width="800" alt="img1" src="./img/rotation_for2">
+<img width="800" alt="img1" src="./img/rotation_for2.png">
 
 - Minimizing loss is our goal, so we can improve the direction in which loss decreases by comparing the calculations by rotating the angle!
 
@@ -29,11 +29,11 @@
 - In thesis, model are trained by rotating Pi/2 rad.
 - To successfully predict the rotation of an image, the model must learn to localize salient objects in the image.
 - Recognize their orientation and object type, and then relate the object orientation with each type of object.
-<img width="800" alt="img1" src="./img/rotation_model">
+<img width="800" alt="img1" src="./img/rotation_model.png">
 
 ## Comparing attention between supervised learning and self-supervised learning
 - Self-supervised learning shows better attention maps than supervised learning.
-<img width="800" alt="img1" src="./img/rotation_compare">
+<img width="800" alt="img1" src="./img/rotation_compare.png">
 
 ## Benefits of rotation
 - computational cost similar to supervised learning.
