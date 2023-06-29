@@ -14,7 +14,7 @@
   - Object detection requires overall sense classification or regression for one input.
 - DenseCL: for self-supervisively learning visual pre-training, pixel-wise learning.
 - Use the dense projection head that receives input from the backbone network: Extract the dense feature map and apply continuous learning for each vector between the feature maps.
-<img width="500" alt="img1" src="./img/DenseCL_head.png">
+<img width="800" alt="img1" src="./img/DenseCL_head.png">
 
 ## Pipeline of DenseCL
 1. Extract the dense feature map using the backbone network and move it to the projection head.
@@ -25,11 +25,14 @@
   - At the dense projection head, global pooling layers are removed and MLP are substituted with 1x1 conv.   
 4. Learning in the direction of improving the contrastive similarity loss of global and local features.
 - Lq: is the global loss (like MoCo)
-<img width="500" alt="img1" src="./img/DenseCL_moco.png">
+<img width="400" alt="img1" src="./img/DenseCL_moco.png">
+
 - Lr: is the local loss 
-<img width="500" alt="img1" src="./img/DenseCL_local.png">
+<img width="400" alt="img1" src="./img/DenseCL_local.png">
+
 - Use two losses combining with Lq and Lr
-<img width="500" alt="img1" src="./img/DenseCL_comb.png">
+<img width="300" alt="img1" src="./img/DenseCL_comb.png">
+
 - If λ=0, it is the same as MoCo v2, and the default setting is λ=0.5.
 - If λ=1, it means that global information does not used.
   - Chicken-and-egg issue: Problems that can occur when λ=1.
