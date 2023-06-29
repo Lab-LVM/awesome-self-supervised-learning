@@ -13,15 +13,15 @@
   - Location in the image, their type, and their pose.
 - In this thesis, Use rotation transformations to predict image.
   - It should be recongnized even in a rotated state.
-<img width="800" alt="img1" src="./img/rotation_degree.png">
+<img width="600" alt="img1" src="./img/rotation_degree.png">
 
 ## Methodolgy
 - F: ConvNet model, G: k distinct geometric variations (not random because they are discrete)
 - g: Create converted image X (transformation applied)
-<img width="800" alt="img1" src="./img/rotation_for1.png">
+<img width="500" alt="img1" src="./img/rotation_for1.png">
 
 - X | (theta): Transformation by changing the angle by theta for input X.
-<img width="800" alt="img1" src="./img/rotation_for2.png">
+<img width="500" alt="img1" src="./img/rotation_for2.png">
 
 - Minimizing loss is our goal, so we can improve the direction in which loss decreases by comparing the calculations by rotating the angle!
 
@@ -29,11 +29,11 @@
 - In thesis, model are trained by rotating Pi/2 rad.
 - To successfully predict the rotation of an image, the model must learn to localize salient objects in the image.
 - Recognize their orientation and object type, and then relate the object orientation with each type of object.
-<img width="800" alt="img1" src="./img/rotation_model.png">
+<img width="600" alt="img1" src="./img/rotation_model.png">
 
 ## Comparing attention between supervised learning and self-supervised learning
 - Self-supervised learning shows better attention maps than supervised learning.
-<img width="800" alt="img1" src="./img/rotation_compare.png">
+<img width="600" alt="img1" src="./img/rotation_compare.png">
 
 ## Benefits of rotation
 - computational cost similar to supervised learning.
@@ -47,7 +47,7 @@
 - Using four rotations is the best for accuracy.
 <img width="800" alt="img1" src="./img/rotation_num.png">
 - supervised NIN and RotNet + conv are the same architectures, and there is no significant difference in performance between supervised and self-supevised learning.
-<img width="800" alt="img1" src="./img/rotation_perf.png">
+<img width="600" alt="img1" src="./img/rotation_perf.png">
 
 ## Reference
 ```tex
