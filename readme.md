@@ -46,3 +46,7 @@ The paper lists of Self-Supervised Learning
 
 ## Clustering
 - **DeepCluster**: "Deep Clustering for Unsupervised Learning of Visual Features", ECCV, 2018 [[paper](https://arxiv.org/pdf/1807.05520.pdf)] [[code](https://github.com/facebookresearch/deepcluster)] [[summary](summary/DeepCluster.md)]
+- **SeLA**: "Self-labelling via simultaneous clustering and representation learning", ICLR, 2020 [[paper](https://arxiv.org/abs/1911.05371)] [[code](https://github.com/yukimasano/self-label)] [[summary](summary/SeLA.md)]
+- **SwAV**: "Unsupervised Learning of Visual Features by Contrasting Cluster Assignments", NeurIPS, 2020 [[paper](https://arxiv.org/abs/2006.09882)] [[code](https://github.com/facebookresearch/swav)] [[summary](summary/SwAV.md)]
+- **SLIC**: "SLIC: Self-Supervised Learning with Iterative Clustering for Human Action Videos", CVPR, 2022 [[paper](https://arxiv.org/abs/2206.12534)] [[code](https://github.com/rvl-lab-utoronto/video_similarity_search)] [[summary](summary/SLIC.md)]
+
