@@ -9,7 +9,7 @@ This repository contains the Self-Supervised learning paper lists
 - [Contrastive Learning](#Contrastive-Learning)
 - [Self-Prediction](#Self-Prediction)
 - [Distillation](#Distillation)
-- [Clustering](#Clustering)
+- [Clustering](#clustering)
 
 ## Introduction
 
