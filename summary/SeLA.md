@@ -1,7 +1,7 @@
 # SeLA
 - Title: Self-labeling via simultaneous clustering and representation learning.
 - Publication: ICLR, 2020
-- Link: [[📖](https://arxiv.org/abs/1911.05371)] [[💻](https://github.com/yukimasano/self-label)]
+- Link: [📖(https://arxiv.org/abs/1911.05371)] [💻(https://github.com/yukimasano/self-label)]
 
  
 ## Introduce 
